@@ -11,10 +11,11 @@ class SentimentAnalysis:
 
     def DownloadData(self):
         # authenticating
-        consumerKey = 'y8v7390J9qadOIesXhSa57zZh'
-        consumerSecret = 'IHVGi52g7YQSHhlzFxX0RnQepsT44qGwOlZqbARp5pb9wbfaLr'
-        accessToken = '3255505609-sE3s5MzKSxh0HGimZssvk7PDHvjELCzZbKVnWq6'
-        accessTokenSecret = 'PYxmWaYPrk5wo2Rvs4GlQ5P5bWK3FpAYrbROH2eUiFqDo'
+        consumerKey = 'Enter Your Consumer Key'
+        consumerSecret = 'Enter Your Consumer Secret Key'
+        accessToken = 'Enter Your Access Token'
+        accessTokenSecret = 'Enter Your Access Tonken Secret key'
+        
         auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
         auth.set_access_token(accessToken, accessTokenSecret)
         api = tweepy.API(auth)
@@ -32,8 +33,7 @@ class SentimentAnalysis:
         # Use csv writer
         csvWriter = csv.writer(csvFile)
 
-
-        # creating some variables to store info
+        # creating some variables to store Polarity
         polarity = 0
         positive = 0
         wpositive = 0
@@ -42,7 +42,6 @@ class SentimentAnalysis:
         wnegative = 0
         snegative = 0
         neutral = 0
-
 
         # iterating through tweets fetched
         for tweet in self.tweets:
@@ -127,6 +126,7 @@ class SentimentAnalysis:
         temp = 100 * float(part) / float(whole)
         return format(temp, '.2f')
 
+    # function to display the current data in a PieChart
     def plotPieChart(self, positive, wpositive, spositive, negative, wnegative, snegative, neutral, searchTerm, noOfSearchTerms):
         labels = ['Positive [' + str(positive) + '%]', 'Weakly Positive [' + str(wpositive) + '%]','Strongly Positive [' + str(spositive) + '%]', 'Neutral [' + str(neutral) + '%]',
                   'Negative [' + str(negative) + '%]', 'Weakly Negative [' + str(wnegative) + '%]', 'Strongly Negative [' + str(snegative) + '%]']
